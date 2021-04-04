@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,6 +30,5 @@ public class Producto implements Serializable {
   private Double precio;
 
   @Column(name = "create_at")
-  @Temporal(TemporalType.TIMESTAMP)
   private LocalDate createAt;
 }
