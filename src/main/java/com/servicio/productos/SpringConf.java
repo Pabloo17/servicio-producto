@@ -1,6 +1,5 @@
 package com.servicio.productos;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
@@ -20,10 +19,5 @@ public class SpringConf {
         .apis(RequestHandlerSelectors.basePackage("com.servicio.productos.controllers"))
         .paths(PathSelectors.any())
         .build();
-  }
-
-  @Bean
-  public ModelMapper modelMapper() {
-    return new ModelMapper();
   }
 }
