@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,4 +32,6 @@ public class Producto implements Serializable {
 
   @Column(name = "create_at")
   private LocalDate createAt;
+
+  @Transient private Integer port;
 }
