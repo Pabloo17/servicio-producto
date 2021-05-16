@@ -4,8 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.servicio.productos.models.entity.Producto;
 import com.servicio.productos.models.service.IProductoService;
@@ -38,5 +44,28 @@ public class ProductoController {
     Producto producto = productoService.findById(id);
     producto.setPort(port);
     return producto;
+  }
+
+  @PostMapping("/crear")
+  @ResponseStatus(HttpStatus.CREATED)
+  public Producto crear(@RequestBody Producto producto) {
+    return productoService.save(producto);
+  }
+
+  @PutMapping("/editar/{id}")
+  @ResponseStatus(HttpStatus.CREATED)
+  public Producto editar(@RequestBody Producto producto, @PathVariable Long id) {
+    Producto productoDb = productoService.findById(id);
+
+    productoDb.setNombre(producto.getNombre());
+    productoDb.setPrecio(producto.getPrecio());
+
+    return productoService.save(productoDb);
+  }
+
+  @DeleteMapping("/eliminar/{id}")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public void eliminar(@RequestBody Producto producto, @PathVariable Long id) {
+    productoService.deleteById(id);
   }
 }
