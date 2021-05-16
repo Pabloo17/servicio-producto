@@ -1,7 +1,7 @@
 package com.servicio.productos.models.service;
 
 import java.util.List;
-import com.servicio.productos.models.entity.Producto;
+import com.servicio.commons.models.entity.Producto;
 
 public interface IProductoService {
 
